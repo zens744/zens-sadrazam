@@ -10,6 +10,18 @@
 </head>
 
 <body>
+    <!-- 1. Giriş Ekranı (Restricted Access) -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">Z&S<span>_CORP</span></div>
+            <div class="access-text">LEVEL_1_AUTHENTICATION_REQUIRED</div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="status-text">DECRYPTING_SYSTEM_FILES...</div>
+        </div>
+    </div>
+
     <div id="custom-cursor"></div>
     <canvas id="matrix"></canvas>
 
@@ -22,9 +34,10 @@
         <div class="nav-container">
             <div class="logo">Z&S<span>_CORP</span></div>
             <ul class="nav-links">
-                <li><a href="#about">HAKKIMDA</a></li>
-                <li><a href="#blog">BLOG</a></li>
-                <li><a href="#skills">YETENEKLER</a></li>
+                <li><a href="#about">SİSTEM</a></li>
+                <li><a href="#projects">OPERASYONLAR</a></li>
+                <li><a href="#blog">BELGELER</a></li>
+                <li><a href="#skills">ARSENAL</a></li>
             </ul>
         </div>
     </nav>
@@ -241,6 +254,22 @@
             <p class="copyright">&copy; 2026 zZens & Sadrazam. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
+
+    <!-- 6. Canlı İstatistikler (Live Data) -->
+    <div id="system-dashboard">
+        <div class="dash-item">
+            <span class="label">CPU_LOAD:</span>
+            <span class="value" id="cpu-load">12%</span>
+        </div>
+        <div class="dash-item">
+            <span class="label">NET_TRAFFIC:</span>
+            <span class="value" id="net-traffic">2.4 MB/s</span>
+        </div>
+        <div class="dash-item">
+            <span class="label">BTC_VALUE:</span>
+            <span class="value" id="btc-price">$98,432</span>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

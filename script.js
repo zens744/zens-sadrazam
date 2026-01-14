@@ -138,3 +138,71 @@ window.addEventListener('scroll', () => {
         nav.style.padding = '1.5rem 0';
     }
 });
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSystemSound(freq, type, duration) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+}
+
+// 8. Preloader Mantığı
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const progressBar = document.querySelector('.progress-bar');
+    const statusText = document.querySelector('.status-text');
+    let width = 0;
+
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                playSystemSound(800, 'square', 0.1); // Giriş sesi
+            }, 500);
+        } else {
+            width += Math.random() * 10;
+            if (width > 100) width = 100;
+            progressBar.style.width = width + '%';
+
+            if (width > 30) statusText.innerText = "BYPASSING_FIREWALLS...";
+            if (width > 60) statusText.innerText = "INJECTING_SCRIPTS...";
+            if (width > 90) statusText.innerText = "ACCESS_GRANTED_WELCOME_AGENT";
+        }
+    }, 200);
+});
+
+// 9. Canlı Dashboard Verileri
+function updateDashboard() {
+    const cpu = document.getElementById('cpu-load');
+    const net = document.getElementById('net-traffic');
+    const btc = document.getElementById('btc-price');
+
+    cpu.innerText = Math.floor(Math.random() * 40 + 5) + "%";
+    net.innerText = (Math.random() * 5 + 0.5).toFixed(1) + " MB/s";
+
+    // Basit BTC fiyat oynatıcı
+    let currentBtc = 98432 + (Math.random() * 100 - 50);
+    btc.innerText = "$" + Math.floor(currentBtc).toLocaleString();
+}
+setInterval(updateDashboard, 2000);
+
+// Hover sesleri ekle
+const soundElements = document.querySelectorAll('a, button, .card-3d, .blog-card, .project-box');
+soundElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        playSystemSound(1200, 'sine', 0.05);
+    });
+});
