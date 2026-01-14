@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zZens & Sadrazam | Dijital Karargâh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="custom-cursor"></div>
+    <canvas id="matrix"></canvas>
+
+    <div id="audio-control">
+        <button id="play-btn"><i class="fa-solid fa-play"></i> AUDIO</button>
+        <div id="youtube-player"></div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Z&S<span>_CORP</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">HAKKIMDA</a></li>
+                <li><a href="#blog">BLOG</a></li>
+                <li><a href="#skills">YETENEKLER</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">ZENS & SADRAZAM</div>
+            <h1>CODE • CREATE • DOMINATE</h1>
+            <p>Digital Ghosts in the Cyber World</p>
+            <div class="hero-btns">
+                <a href="#blog" class="btn primary">BELGELERİ İNCELE</a>
+                <a href="#discord" class="btn secondary">EKİBE KATIL</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>SİSTEM BİLGİSİ</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-title">system_info.exe</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="command">whoami</span>
+                </div>
+                <div class="terminal-output">
+                    zZens & Sadrazam
+                </div>
+
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="command">cat about.txt</span>
+                </div>
+                <div class="terminal-output">
+                    CODE WARRIORS • CYBER REBELS • DIGITAL GHOSTS
+                </div>
+
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="command">ls -la skills/</span>
+                </div>
+                <div class="terminal-output">
+                    ⚡ PYTHON 🌐 WEB 🤖 BOTS 🔐 SECURITY ⚙️ TOOLS
+                </div>
+
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="command">echo $STATUS</span>
+                </div>
+                <div class="terminal-output">
+                    <span class="status-dot"></span> ACTIVE && ONLINE && READY FOR WARFARE
+                </div>
+
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="command">ps aux | grep projects</span>
+                </div>
+                <div class="terminal-output">
+                    Bot Empire: <span class="highlight">RUNNING</span> | Cyber Tools: <span
+                        class="highlight">ACTIVE</span> | Security Research: <span class="highlight">ANALYZING</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span> <span class="cursor">_</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="authors-grid">
+            <!-- zZens 3D Card -->
+            <div class="card-3d zens">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="author-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3>zZens</h3>
+                        <span class="role">Python & Discord Dev</span>
+                        <p>Digital Identity: ACCESS_LEVEL_1</p>
+                        <div class="tags">
+                            <span>#Python</span>
+                            <span>#BotDev</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>TEKNİK VERİLER</h3>
+                        <ul>
+                            <li>AsyncIO Expert</li>
+                            <li>Bot Architecture</li>
+                            <li>Database Security</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Sadrazam 3D Card -->
+            <div class="card-3d sadrazam">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="author-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Sadrazam</h3>
+                        <span class="role">Pro Reporter & Sec</span>
+                        <p>Digital Identity: ACCESS_LEVEL_1</p>
+                        <div class="tags">
+                            <span>#Reporter</span>
+                            <span>#InstaSec</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>TEKNİK VERİLER</h3>
+                        <ul>
+                            <li>Insta Vulnerabilities</li>
+                            <li>Account Reporting</li>
+                            <li>Offensive Security</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Canlı Log Beslemesi -->
+        <div class="log-section">
+            <div class="log-header">
+                <i class="fa-solid fa-tower-broadcast"></i> CANLI SİSTEM AKIŞI
+            </div>
+            <div class="log-container" id="log-feed">
+                <!-- Loglar JS ile buraya gelecek -->
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="section-title">
+            <h2>GİZLİ BELGELER (BLOG)</h2>
+            <div class="line"></div>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="card-glow"></div>
+                <div class="blog-tag">zZens</div>
+                <h3>BOT MASTERY: API WARFARE</h3>
+                <p>Discord'un derinliklerinde bot geliştirme sanatı. Kesintisiz entegrasyon ve ileri düzey sistem
+                    mimarisi.</p>
+                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
+            </div>
+            <div class="blog-card">
+                <div class="card-glow"></div>
+                <div class="blog-tag">Sadrazam</div>
+                <h3>INSTA PRO REPORTER: BAN SYSTEMS</h3>
+                <p>Instagram hesaplarındaki kritik açıkları tespit etme, raporlama ve hesap kapatma (banning)
+                    operasyonları.</p>
+                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
+            </div>
+            <div class="blog-card">
+                <div class="card-glow"></div>
+                <div class="blog-tag">zZens & Sadrazam</div>
+                <h3>CYBER INTELLIGENCE & OSINT</h3>
+                <p>Veri madenciliği ve açık kaynak istihbaratı. Hedef odaklı bilgi toplama ve siber analiz teknikleri.
+                </p>
+                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="section-title">
+            <h2>ARSENAL (TECH STACK)</h2>
+            <div class="line"></div>
+        </div>
+        <div class="arsenal-grid">
+            <div class="arsenal-item">
+                <i class="fa-brands fa-python"></i>
+                <div class="arsenal-info">
+                    <h4>PYTHON</h4>
+                    <div class="bar-outer">
+                        <div class="bar-inner" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="arsenal-item">
+                <i class="fa-solid fa-user-secret"></i>
+                <div class="arsenal-info">
+                    <h4>CYBER SECURITY</h4>
+                    <div class="bar-outer">
+                        <div class="bar-inner" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="arsenal-item">
+                <i class="fa-solid fa-robot"></i>
+                <div class="arsenal-info">
+                    <h4>BOT ARCHITECTURE</h4>
+                    <div class="bar-outer">
+                        <div class="bar-inner" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="arsenal-item">
+                <i class="fa-solid fa-gears"></i>
+                <div class="arsenal-info">
+                    <h4>BANNING TOOLS</h4>
+                    <div class="bar-outer">
+                        <div class="bar-inner" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <p class="copyright">&copy; 2026 zZens & Sadrazam. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
