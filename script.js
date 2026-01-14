@@ -177,9 +177,9 @@ window.addEventListener('load', () => {
             if (width > 100) width = 100;
             progressBar.style.width = width + '%';
 
-            if (width > 30) statusText.innerText = "SİSTEM TARANIYOR...";
-            if (width > 60) statusText.innerText = "DOSYALAR YÜKLENİYOR...";
-            if (width > 90) statusText.innerText = "GİRİŞ BAŞARILI, HOŞ GELDİNİZ!";
+            if (width > 30) statusText.innerText = "SCANNING CORE MODULES...";
+            if (width > 60) statusText.innerText = "LOADING SYSTEM ASSETS...";
+            if (width > 90) statusText.innerText = "ACCESS GRANTED. WELCOME.";
         }
     }, 200);
 });
