@@ -35,16 +35,16 @@ window.addEventListener('resize', () => {
 // 2. Canlı Log Beslemesi
 const logFeed = document.getElementById('log-feed');
 const logMessages = [
-    "Connection established to secure_proxy_v4",
+    "Connection established to Secure Proxy v4",
     "Encrypted data packet received (1024kb)",
     "Bypassing secondary firewall...",
     "User 'zZens' authorized via terminal",
     "Sadrazam: New tool 'InstaSpy' initialized",
     "Security scan: 0 vulnerabilities found",
     "Monitoring active sessions: 12",
-    "Database backup completed on Node-7",
+    "Database backup completed on Node 7",
     "Incoming request from unknown IP: 192.168.1.1",
-    "Access denied on system_core_files",
+    "Access denied on system core files",
     "New blog entry published: Bot Mastery 101"
 ];
 
@@ -177,9 +177,9 @@ window.addEventListener('load', () => {
             if (width > 100) width = 100;
             progressBar.style.width = width + '%';
 
-            if (width > 30) statusText.innerText = "BYPASSING_FIREWALLS...";
-            if (width > 60) statusText.innerText = "INJECTING_SCRIPTS...";
-            if (width > 90) statusText.innerText = "ACCESS_GRANTED_WELCOME_AGENT";
+            if (width > 30) statusText.innerText = "SİSTEM TARANIYOR...";
+            if (width > 60) statusText.innerText = "DOSYALAR YÜKLENİYOR...";
+            if (width > 90) statusText.innerText = "GİRİŞ BAŞARILI, HOŞ GELDİNİZ!";
         }
     }, 200);
 });
