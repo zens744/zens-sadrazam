@@ -4,298 +4,703 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zZens & Sadrazam | Dijital Karargâh</title>
+    <title>Loriax Network - Türkiye'nin En İyi Minecraft Sunucusu</title>
+    <meta name="description"
+        content="Loriax Network - Eşsiz Minecraft deneyimi! PvP, Survival, SkyBlock ve daha fazlası.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
 <body>
-    <!-- 1. Giriş Ekranı (Restricted Access) -->
+    <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-logo">Z&S<span> // HQ</span></div>
-            <div class="access-text">SYSTEM INITIALIZING...</div>
+            <img src="assets/logo.png" alt="Loriax Logo" class="loader-logo">
+            <div class="loader-text">LORIAX NETWORK</div>
             <div class="progress-container">
                 <div class="progress-bar"></div>
             </div>
-            <div class="status-text">PLEASE WAIT...</div>
+            <div class="status-text">Sunucuya bağlanılıyor...</div>
         </div>
     </div>
 
-    <div id="custom-cursor"></div>
-    <canvas id="matrix"></canvas>
-
-    <div id="audio-control">
-        <button id="play-btn"><i class="fa-solid fa-play"></i> AUDIO</button>
-        <div id="youtube-player"></div>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <i class="fas fa-bullhorn"></i>
+            <span>🎉 SUNUCUMUZA HOŞGELDİNİZ! ÖZEL ETKİNLİKLER İÇİN DISCORD'A KATIL!</span>
+            <a href="https://discord.gg/6qPNs8PagB" target="_blank" class="announcement-btn">Discord'a Katıl</a>
+        </div>
     </div>
 
-    <nav>
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">zZens<span> & Sadrazam</span></div>
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="Loriax" class="logo-img">
+                <span class="logo-text">LORIAX<span class="highlight">NETWORK</span></span>
+            </a>
+
+            <div class="nav-ip" onclick="copyIP()">
+                <i class="fas fa-server"></i>
+                <span>IP: <strong>play.loriax.com</strong></span>
+                <i class="fas fa-copy copy-icon"></i>
+            </div>
+
             <ul class="nav-links">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="#blog">BLOG</a></li>
-                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#anasayfa" class="active">Anasayfa</a></li>
+                <li><a href="#ozellikler">Özellikler</a></li>
+                <li><a href="#magaza">Mağaza</a></li>
+                <li><a href="#haberler">Haberler</a></li>
+                <li><a href="#liderlik">Liderlik</a></li>
+                <li><a href="#kurallar">Kurallar</a></li>
+                <li><a href="#destek">Destek</a></li>
             </ul>
+
+            <div class="nav-buttons">
+                <a href="https://discord.gg/6qPNs8PagB" target="_blank" class="btn btn-discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <header class="hero">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-links">
+            <li><a href="#anasayfa">Anasayfa</a></li>
+            <li><a href="#ozellikler">Özellikler</a></li>
+            <li><a href="#magaza">Mağaza</a></li>
+            <li><a href="#haberler">Haberler</a></li>
+            <li><a href="#liderlik">Liderlik</a></li>
+            <li><a href="#kurallar">Kurallar</a></li>
+            <li><a href="#destek">Destek</a></li>
+            <li><a href="https://discord.gg/6qPNs8PagB" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="anasayfa" class="hero">
+        <div class="hero-bg">
+            <div class="particles" id="particles"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
         <div class="hero-content">
-            <div class="hero-badge">[ WELCOME ]</div>
-            <h1>CYBER OPERATIONS HUB</h1>
-            <p>Advanced Python Development & Security Research</p>
-            <div class="hero-btns">
-                <a href="#blog" class="btn primary">BELGELERİ İNCELE</a>
-                <a href="#discord" class="btn secondary">EKİBE KATIL</a>
+            <img src="assets/logo.png" alt="Loriax Network" class="hero-logo">
+            <h1 class="hero-title">
+                <span class="title-main">LORIAX</span>
+                <span class="title-sub">NETWORK</span>
+            </h1>
+            <p class="hero-description">Türkiye'nin En İyi Minecraft Deneyimi</p>
+
+            <div class="server-ip-box" onclick="copyIP()">
+                <div class="ip-label">SUNUCU IP</div>
+                <div class="ip-address">
+                    <i class="fas fa-server"></i>
+                    <span id="serverIP">play.loriax.com</span>
+                    <button class="copy-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        <span>Kopyala</span>
+                    </button>
+                </div>
+                <div class="ip-status">
+                    <span class="status-dot online"></span>
+                    <span id="playerCount">Çevrimiçi</span>
+                </div>
             </div>
-        </div>
-    </header>
 
-    <section id="about" class="about">
-        <div class="section-title">
-            <h2>SYSTEM ARCHITECTURE</h2>
-            <div class="line"></div>
-        </div>
-
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                </div>
-                <div class="terminal-title">system_info.exe</div>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/6qPNs8PagB" target="_blank" class="btn btn-hero-primary">
+                    <i class="fab fa-discord"></i> Discord'a Katıl
+                </a>
+                <a href="#ozellikler" class="btn btn-hero-secondary">
+                    <i class="fas fa-gamepad"></i> Keşfet
+                </a>
             </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="command">whoami</span>
-                </div>
-                <div class="terminal-output">
-                    zZens & Sadrazam
-                </div>
 
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="command">cat about.txt</span>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value" data-count="1000">0</div>
+                    <div class="stat-label">Toplam Oyuncu</div>
                 </div>
-                <div class="terminal-output">
-                    CODE WARRIORS • CYBER REBELS • DIGITAL GHOSTS
+                <div class="stat-item">
+                    <div class="stat-value" data-count="50">0</div>
+                    <div class="stat-label">Çevrimiçi</div>
                 </div>
-
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="command">ls -la skills/</span>
-                </div>
-                <div class="terminal-output">
-                    ⚡ PYTHON 🌐 WEB 🤖 BOTS 🔐 SECURITY ⚙️ TOOLS
-                </div>
-
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="command">echo $STATUS</span>
-                </div>
-                <div class="terminal-output">
-                    <span class="status-dot"></span> ACTIVE && ONLINE && READY FOR WARFARE
-                </div>
-
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="command">ps aux | grep projects</span>
-                </div>
-                <div class="terminal-output">
-                    Bot Empire: <span class="highlight">RUNNING</span> | Cyber Tools: <span
-                        class="highlight">ACTIVE</span> | Security Research: <span class="highlight">ANALYZING</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">$</span> <span class="cursor">_</span>
+                <div class="stat-item">
+                    <div class="stat-value" data-count="99">0</div>
+                    <div class="stat-label">Uptime %</div>
                 </div>
             </div>
         </div>
 
-        <div class="authors-grid">
-            <!-- zZens 3D Card -->
-            <div class="card-3d zens">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="author-icon"><i class="fa-solid fa-code"></i></div>
-                        <h3>zZens</h3>
-                        <span class="role">Python & Discord Developer</span>
-                        <p>STATUS: SYSTEM ADMIN</p>
-                        <div class="tags">
-                            <span>#Python</span>
-                            <span>#BotDev</span>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="ozellikler" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ÖZELLİKLER</span>
+                <h2 class="section-title">Neden Loriax Network?</h2>
+                <p class="section-desc">En iyi Minecraft deneyimini sunmak için buradayız</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Yüksek Performans</h3>
+                    <p>Lag olmadan kesintisiz oyun deneyimi için optimize edilmiş sunucular.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Anti-Cheat Sistemi</h3>
+                    <p>Gelişmiş anti-cheat sistemimiz ile adil oyun ortamı.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Aktif Topluluk</h3>
+                    <p>Binlerce oyuncudan oluşan aktif ve samimi topluluk.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>7/24 Destek</h3>
+                    <p>Her zaman yardıma hazır profesyonel destek ekibi.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Etkinlikler</h3>
+                    <p>Düzenli turnuvalar ve ödüllü etkinlikler.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Özel İçerikler</h3>
+                    <p>Benzersiz oyun modları ve özel eklentiler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="magaza" class="store">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">MAĞAZA</span>
+                <h2 class="section-title">Sunucu Market</h2>
+                <p class="section-desc">Sunucumuzu desteklemek ve özel ayrıcalıklar kazanmak için mağazamızdan alışveriş
+                    yapabilirsiniz.</p>
+            </div>
+
+            <div class="store-grid">
+                <div class="store-card">
+                    <div class="store-badge">POPÜLER</div>
+                    <div class="store-icon"><i class="fas fa-crown"></i></div>
+                    <h3>LORIAX VIP</h3>
+                    <div class="store-price">
+                        <span class="amount">100</span>
+                        <span class="currency">TL</span>
+                        <span class="period">/AYLIK</span>
+                    </div>
+                    <ul class="store-features">
+                        <li><i class="fas fa-check"></i> [VIP] Tagı</li>
+                        <li><i class="fas fa-check"></i> Giriş Mesajı</li>
+                        <li><i class="fas fa-check"></i> /fly Komutu</li>
+                        <li><i class="fas fa-check"></i> Özel Kitler</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block">Satın Al</a>
+                </div>
+
+                <div class="store-card featured">
+                    <div class="store-badge">EN İYİ</div>
+                    <div class="store-icon"><i class="fas fa-gem"></i></div>
+                    <h3>LORIAX VIP+</h3>
+                    <div class="store-price">
+                        <span class="amount">200</span>
+                        <span class="currency">TL</span>
+                        <span class="period">/AYLIK</span>
+                    </div>
+                    <ul class="store-features">
+                        <li><i class="fas fa-check"></i> [VIP+] Tagı</li>
+                        <li><i class="fas fa-check"></i> Renkli Chat</li>
+                        <li><i class="fas fa-check"></i> Tüm VIP Özellikleri</li>
+                        <li><i class="fas fa-check"></i> Özel Kozmetikler</li>
+                        <li><i class="fas fa-check"></i> 2 Kat Kredi</li>
+                    </ul>
+                    <a href="#" class="btn btn-hero-primary btn-block">Satın Al</a>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-icon"><i class="fas fa-star"></i></div>
+                    <h3>KREDİ PAKETİ</h3>
+                    <div class="store-price">
+                        <span class="amount">50</span>
+                        <span class="currency">TL</span>
+                    </div>
+                    <ul class="store-features">
+                        <li><i class="fas fa-check"></i> 500 Oyun Kredisi</li>
+                        <li><i class="fas fa-check"></i> Market Harcamaları</li>
+                        <li><i class="fas fa-check"></i> Hızlı Teslimat</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block">Satın Al</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modes Section -->
+    <section class="game-modes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">OYUN MODLARI</span>
+                <h2 class="section-title">Oyun Modlarımız</h2>
+                <p class="section-desc">Her tarza uygun oyun modları</p>
+            </div>
+
+            <div class="modes-grid">
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <div class="mode-overlay">
+                            <i class="fas fa-skull-crossbones"></i>
                         </div>
                     </div>
-                    <div class="card-back">
-                        <h3>SPECIALIZATIONS</h3>
-                        <ul>
-                            <li>AsyncIO Expert</li>
-                            <li>Bot Architecture</li>
-                            <li>Database Security</li>
-                        </ul>
+                    <div class="mode-content">
+                        <h3>PvP Arena</h3>
+                        <p>Savaş yeteneklerini göster!</p>
+                        <span class="mode-players"><i class="fas fa-users"></i> Aktif</span>
                     </div>
                 </div>
-            </div>
-            <!-- Sadrazam 3D Card -->
-            <div class="card-3d sadrazam">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="author-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>Sadrazam</h3>
-                        <span class="role">Social Media & Security</span>
-                        <p>STATUS: SECURITY SPECIALIST</p>
-                        <div class="tags">
-                            <span>#Reporter</span>
-                            <span>#InstaSec</span>
+
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <div class="mode-overlay">
+                            <i class="fas fa-tree"></i>
                         </div>
                     </div>
-                    <div class="card-back">
-                        <h3>SPECIALIZATIONS</h3>
-                        <ul>
-                            <li>Insta Vulnerabilities</li>
-                            <li>Account Reporting</li>
-                            <li>Offensive Security</li>
-                        </ul>
+                    <div class="mode-content">
+                        <h3>Survival</h3>
+                        <p>Hayatta kal ve inşa et!</p>
+                        <span class="mode-players"><i class="fas fa-users"></i> Aktif</span>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Canlı Log Beslemesi -->
-        <div class="log-section">
-            <div class="log-header">
-                <i class="fa-solid fa-tower-broadcast"></i> LIVE SYSTEM FEED
-            </div>
-            <div class="log-container" id="log-feed">
-                <!-- Loglar JS ile buraya gelecek -->
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <div class="section-title">
-            <h2>PROJECT ARCHIVE</h2>
-            <div class="line"></div>
-        </div>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">YAZILIM</div>
-                <h3>LORIAX BOT SYSTEM</h3>
-                <p>Advanced Discord server management and economy bot. Designed for high performance.</p>
-            </div>
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">GÜVENLİK</div>
-                <h3>INSTA SHIELD PRO</h3>
-                <p>Social media security analysis and reporting solutions.</p>
-            </div>
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">ARAÇLAR</div>
-                <h3>ZERO TRACE PANEL</h3>
-                <p>Privacy and digital footprint management control panel.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog">
-        <div class="section-title">
-            <h2>INTEL LOGS (BLOG)</h2>
-            <div class="line"></div>
-        </div>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">zZens</div>
-                <h3>BOT MASTERY: API WARFARE</h3>
-                <p>Discord'un derinliklerinde bot geliştirme sanatı. Kesintisiz entegrasyon ve ileri düzey sistem
-                    mimarisi.</p>
-                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
-            </div>
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">Sadrazam</div>
-                <h3>INSTA PRO REPORTER: BAN SYSTEMS</h3>
-                <p>Instagram hesaplarındaki kritik açıkları tespit etme, raporlama ve hesap kapatma (banning)
-                    projeleri.</p>
-                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
-            </div>
-            <div class="blog-card">
-                <div class="card-glow"></div>
-                <div class="blog-tag">zZens & Sadrazam</div>
-                <h3>CYBER INTELLIGENCE & OSINT</h3>
-                <p>Veri madenciliği ve açık kaynak istihbaratı. Hedef odaklı bilgi toplama ve siber analiz teknikleri.
-                </p>
-                <a href="#" class="read-more">BELGEYİ AÇ <span class="arrow">>></span></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <div class="section-title">
-            <h2>CORE SKILLS (ARSENAL)</h2>
-            <div class="line"></div>
-        </div>
-        <div class="arsenal-grid">
-            <div class="arsenal-item">
-                <i class="fa-brands fa-python"></i>
-                <div class="arsenal-info">
-                    <h4>PYTHON</h4>
-                    <div class="bar-outer">
-                        <div class="bar-inner" style="width: 95%;"></div>
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <div class="mode-overlay">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="mode-content">
+                        <h3>SkyBlock</h3>
+                        <p>Gökyüzünde ada kur!</p>
+                        <span class="mode-players"><i class="fas fa-users"></i> Aktif</span>
                     </div>
                 </div>
-            </div>
-            <div class="arsenal-item">
-                <i class="fa-solid fa-user-secret"></i>
-                <div class="arsenal-info">
-                    <h4>CYBER SECURITY</h4>
-                    <div class="bar-outer">
-                        <div class="bar-inner" style="width: 90%;"></div>
+
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <div class="mode-overlay">
+                            <i class="fas fa-bed"></i>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="arsenal-item">
-                <i class="fa-solid fa-robot"></i>
-                <div class="arsenal-info">
-                    <h4>BOT ARCHITECTURE</h4>
-                    <div class="bar-outer">
-                        <div class="bar-inner" style="width: 85%;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="arsenal-item">
-                <i class="fa-solid fa-gears"></i>
-                <div class="arsenal-info">
-                    <h4>BANNING TOOLS</h4>
-                    <div class="bar-outer">
-                        <div class="bar-inner" style="width: 80%;"></div>
+                    <div class="mode-content">
+                        <h3>BedWars</h3>
+                        <p>Yatakları yok et!</p>
+                        <span class="mode-players"><i class="fas fa-users"></i> Aktif</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <p class="copyright">&copy; 2026 zZens & Sadrazam. Tüm Hakları Saklıdır.</p>
+    <!-- News Section -->
+    <section id="haberler" class="news">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">HABERLER</span>
+                <h2 class="section-title">Son Gelişmeler</h2>
+                <p class="section-desc">Sunucumuzdaki en güncel haberler</p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card featured">
+                    <div class="news-badge">YENİ</div>
+                    <div class="news-image">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-calendar"></i> 19 Ocak 2026
+                        </div>
+                        <h3>Sunucu Açılışı!</h3>
+                        <p>Loriax Network artık aktif! Sunucumuza katılarak eşsiz Minecraft deneyimini yaşayabilirsiniz.
+                            Discord'a katılmayı unutmayın!</p>
+                        <a href="#" class="news-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-calendar"></i> 19 Ocak 2026
+                        </div>
+                        <h3>Haftalık Etkinlikler</h3>
+                        <p>Her hafta düzenlenen özel etkinliklerle ödüller kazan!</p>
+                        <a href="#" class="news-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-calendar"></i> 19 Ocak 2026
+                        </div>
+                        <h3>VIP Avantajları</h3>
+                        <p>VIP üyelik ile özel ayrıcalıklar ve bonuslar!</p>
+                        <a href="#" class="news-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="liderlik" class="leaderboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">LİDERLİK TABLOSU</span>
+                <h2 class="section-title">En İyi Oyuncular</h2>
+                <p class="section-desc">Sunucumuzun en başarılı oyuncuları</p>
+            </div>
+
+            <div class="leaderboard-grid">
+                <div class="leaderboard-card">
+                    <div class="leaderboard-header">
+                        <i class="fas fa-skull"></i>
+                        <h3>En Çok Kill</h3>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leader-item gold">
+                            <span class="rank">1</span>
+                            <img src="https://mc-heads.net/avatar/Steve/32" alt="Player" class="player-head">
+                            <span class="player-name">ProPlayer123</span>
+                            <span class="player-score">2,451</span>
+                        </div>
+                        <div class="leader-item silver">
+                            <span class="rank">2</span>
+                            <img src="https://mc-heads.net/avatar/Alex/32" alt="Player" class="player-head">
+                            <span class="player-name">KillerX</span>
+                            <span class="player-score">1,892</span>
+                        </div>
+                        <div class="leader-item bronze">
+                            <span class="rank">3</span>
+                            <img src="https://mc-heads.net/avatar/Notch/32" alt="Player" class="player-head">
+                            <span class="player-name">Warrior42</span>
+                            <span class="player-score">1,654</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">4</span>
+                            <img src="https://mc-heads.net/avatar/Herobrine/32" alt="Player" class="player-head">
+                            <span class="player-name">Legend99</span>
+                            <span class="player-score">1,423</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">5</span>
+                            <img src="https://mc-heads.net/avatar/Jeb/32" alt="Player" class="player-head">
+                            <span class="player-name">Champion</span>
+                            <span class="player-score">1,201</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leaderboard-card">
+                    <div class="leaderboard-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>En Çok Oynama Süresi</h3>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leader-item gold">
+                            <span class="rank">1</span>
+                            <img src="https://mc-heads.net/avatar/Dream/32" alt="Player" class="player-head">
+                            <span class="player-name">NoLife</span>
+                            <span class="player-score">520h</span>
+                        </div>
+                        <div class="leader-item silver">
+                            <span class="rank">2</span>
+                            <img src="https://mc-heads.net/avatar/Technoblade/32" alt="Player" class="player-head">
+                            <span class="player-name">Grinder</span>
+                            <span class="player-score">489h</span>
+                        </div>
+                        <div class="leader-item bronze">
+                            <span class="rank">3</span>
+                            <img src="https://mc-heads.net/avatar/Philza/32" alt="Player" class="player-head">
+                            <span class="player-name">Dedicated</span>
+                            <span class="player-score">412h</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">4</span>
+                            <img src="https://mc-heads.net/avatar/Sapnap/32" alt="Player" class="player-head">
+                            <span class="player-name">Active24</span>
+                            <span class="player-score">387h</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">5</span>
+                            <img src="https://mc-heads.net/avatar/George/32" alt="Player" class="player-head">
+                            <span class="player-name">Builder</span>
+                            <span class="player-score">354h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leaderboard-card">
+                    <div class="leaderboard-header">
+                        <i class="fas fa-coins"></i>
+                        <h3>En Zengin Oyuncular</h3>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leader-item gold">
+                            <span class="rank">1</span>
+                            <img src="https://mc-heads.net/avatar/Rich/32" alt="Player" class="player-head">
+                            <span class="player-name">RichBoy</span>
+                            <span class="player-score">$1.2M</span>
+                        </div>
+                        <div class="leader-item silver">
+                            <span class="rank">2</span>
+                            <img src="https://mc-heads.net/avatar/Money/32" alt="Player" class="player-head">
+                            <span class="player-name">Banker</span>
+                            <span class="player-score">$980K</span>
+                        </div>
+                        <div class="leader-item bronze">
+                            <span class="rank">3</span>
+                            <img src="https://mc-heads.net/avatar/Gold/32" alt="Player" class="player-head">
+                            <span class="player-name">Trader</span>
+                            <span class="player-score">$756K</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">4</span>
+                            <img src="https://mc-heads.net/avatar/Diamond/32" alt="Player" class="player-head">
+                            <span class="player-name">Farmer</span>
+                            <span class="player-score">$623K</span>
+                        </div>
+                        <div class="leader-item">
+                            <span class="rank">5</span>
+                            <img src="https://mc-heads.net/avatar/Emerald/32" alt="Player" class="player-head">
+                            <span class="player-name">Miner</span>
+                            <span class="player-score">$512K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="kurallar" class="rules">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">KURALLAR</span>
+                <h2 class="section-title">Sunucu Kuralları</h2>
+                <p class="section-desc">Adil ve eğlenceli bir ortam için</p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-number">01</div>
+                    <h3>Saygılı Ol</h3>
+                    <p>Tüm oyunculara saygılı davran. Küfür, hakaret ve taciz yasaktır.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">02</div>
+                    <h3>Hile Kullanma</h3>
+                    <p>Her türlü hile, hack ve yasadışı mod kullanımı yasaktır.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">03</div>
+                    <h3>Spam Yapma</h3>
+                    <p>Chat'te spam yapmak ve reklam yapmak yasaktır.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">04</div>
+                    <h3>Bug Kullanma</h3>
+                    <p>Oyun içi bugları kötüye kullanmak yasaktır. Bulduğunuz bugları bildirin.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">05</div>
+                    <h3>Takım Kuralları</h3>
+                    <p>Takım oyunlarında takım arkadaşlarınıza zarar vermeyin.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">06</div>
+                    <h3>Yetkililere İtaat</h3>
+                    <p>Yöneticilerin ve moderatörlerin kararlarına saygı gösterin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="destek" class="support">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DESTEK</span>
+                <h2 class="section-title">Yardıma mı İhtiyacın Var?</h2>
+                <p class="section-desc">Sorularınız ve talepleriniz için destek ekibimiz her zaman yanınızda.</p>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-item">
+                    <div class="support-icon"><i class="fab fa-discord"></i></div>
+                    <h3>Discord Destek</h3>
+                    <p>En hızlı yanıt için Discord sunucumuzdaki destek kanalını kullanabilirsiniz.</p>
+                    <a href="https://discord.gg/6qPNs8PagB" target="_blank" class="btn btn-discord">Talep Aç</a>
+                </div>
+
+                <div class="support-item">
+                    <div class="support-icon"><i class="fas fa-ticket-alt"></i></div>
+                    <h3>Destek Talebi</h3>
+                    <p>Web sitemiz üzerinden resmi destek talebi oluşturabilirsiniz.</p>
+                    <a href="#" class="btn btn-primary">Bilet Oluştur</a>
+                </div>
+
+                <div class="support-item">
+                    <div class="support-icon"><i class="fas fa-question-circle"></i></div>
+                    <h3>Sıkça Sorulanlar</h3>
+                    <p>Merak ettiğiniz soruların cevaplarına buradan ulaşabilirsiniz.</p>
+                    <a href="#" class="btn btn-hero-secondary">SSS Görüntüle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Maceraya Hazır Mısın?</h2>
+                <p>Hemen sunucumuza katıl ve eşsiz Minecraft deneyimini yaşa!</p>
+                <div class="cta-buttons">
+                    <div class="cta-ip" onclick="copyIP()">
+                        <i class="fas fa-server"></i>
+                        <span>play.loriax.com</span>
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <a href="https://discord.gg/6qPNs8PagB" target="_blank" class="btn btn-cta">
+                        <i class="fab fa-discord"></i> Discord'a Katıl
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Loriax" class="footer-logo">
+                    <h3>Loriax Network</h3>
+                    <p>Türkiye'nin en iyi Minecraft sunucusu. 2026 yılında kurulan sunucumuz, kaliteli oyun deneyimi
+                        sunmayı amaçlamaktadır.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/6qPNs8PagB" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Hızlı Menü</h4>
+                    <ul>
+                        <li><a href="#anasayfa">Anasayfa</a></li>
+                        <li><a href="#ozellikler">Özellikler</a></li>
+                        <li><a href="#haberler">Haberler</a></li>
+                        <li><a href="#liderlik">Liderlik</a></li>
+                        <li><a href="#kurallar">Kurallar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Bağlantılar</h4>
+                    <ul>
+                        <li><a href="#">Mağaza</a></li>
+                        <li><a href="#">Destek</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Hizmet Şartları</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>İletişim</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-server"></i>
+                        <span>play.loriax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-discord"></i>
+                        <span>discord.gg/6qPNs8PagB</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>destek@loriax.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Loriax Network. Tüm hakları saklıdır.</p>
+                <p class="disclaimer">Mojang ile herhangi bir bağlantımız veya onayımız bulunmamaktadır.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- 6. Canlı İstatistikler (Live Data) -->
-    <div id="system-dashboard">
-        <div class="dash-item">
-            <span class="label">CPU LOAD:</span>
-            <span class="value" id="cpu-load">12%</span>
-        </div>
-        <div class="dash-item">
-            <span class="label">NET TRAFFIC:</span>
-            <span class="value" id="net-traffic">2.4 MB/s</span>
-        </div>
-        <div class="dash-item">
-            <span class="label">BTC VALUE:</span>
-            <span class="value" id="btc-price">$98,432</span>
-        </div>
+    <!-- IP Copied Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>IP Adresi Kopyalandı!</span>
     </div>
 
     <script src="script.js"></script>

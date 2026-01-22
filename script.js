@@ -1,208 +1,394 @@
-// 1. Matrix Arka Plan Efekti
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+/* ================================
+   Loriax Network - JavaScript
+   ================================ */
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for (let x = 0; x < columns; x++) drops[x] = 1;
-
-function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#0084ff"; // Neon Mavi
-    ctx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-    }
-}
-setInterval(drawMatrix, 35);
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize all components
+    initPreloader();
+    initNavbar();
+    initMobileMenu();
+    initParticles();
+    initCopyIP();
+    initCounters();
+    initSmoothScroll();
+    initScrollAnimations();
 });
 
-// 2. Canlı Log Beslemesi
-const logFeed = document.getElementById('log-feed');
-const logMessages = [
-    "Connection established to Secure Proxy v4",
-    "Encrypted data packet received (1024kb)",
-    "Bypassing secondary firewall...",
-    "User 'zZens' authorized via terminal",
-    "Sadrazam: New tool 'InstaSpy' initialized",
-    "Security scan: 0 vulnerabilities found",
-    "Monitoring active sessions: 12",
-    "Database backup completed on Node 7",
-    "Incoming request from unknown IP: 192.168.1.1",
-    "Access denied on system core files",
-    "New blog entry published: Bot Mastery 101"
-];
-
-function addLog() {
-    const time = new Date().toLocaleTimeString();
-    const message = logMessages[Math.floor(Math.random() * logMessages.length)];
-    const logEntry = document.createElement('div');
-    logEntry.className = 'log-entry';
-    logEntry.innerHTML = `<span>[${time}]</span> > ${message}`;
-    logFeed.prepend(logEntry);
-
-    if (logFeed.childNodes.length > 20) {
-        logFeed.removeChild(logFeed.lastChild);
-    }
-}
-setInterval(addLog, 2000);
-
-// 6. Özel İmleç (Custom Cursor) Takibi
-const cursor = document.getElementById('custom-cursor');
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX - 10 + 'px';
-    cursor.style.top = e.clientY - 10 + 'px';
-});
-
-const interactiveElements = document.querySelectorAll('a, button, .card-3d, .blog-card');
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-});
-
-// 3. YouTube Müzik Oynatıcısı
-let player;
-const playBtn = document.getElementById('play-btn');
-
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        height: '0',
-        width: '0',
-        videoId: 'HWjCStB6k4o',
-        playerVars: {
-            'autoplay': 0,
-            'controls': 0,
-            'loop': 1,
-            'playlist': 'HWjCStB6k4o'
-        },
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-function onPlayerReady(event) {
-    playBtn.addEventListener('click', () => {
-        if (player.getPlayerState() === 1) {
-            player.pauseVideo();
-            playBtn.innerHTML = '<i class="fa-solid fa-play"></i> AUDIO';
-        } else {
-            player.playVideo();
-            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> PLAYING';
-        }
-    });
-}
-
-// YouTube API'yi yükle
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// 4. Easter Egg: 1337
-let keys = [];
-window.addEventListener('keydown', (e) => {
-    keys.push(e.key);
-    if (keys.length > 4) keys.shift();
-    if (keys.join('') === '1337') {
-        alert('ACCESS GRANTED: Gizli Arşive Hoş Geldin, ajan.');
-        document.body.style.filter = 'hue-rotate(90deg)';
-        keys = [];
-    }
-});
-
-// 5. Scroll ve Navigasyon
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.style.background = 'rgba(5, 5, 5, 0.95)';
-        nav.style.padding = '1rem 0';
-    } else {
-        nav.style.background = 'rgba(5, 5, 5, 0.8)';
-        nav.style.padding = '1.5rem 0';
-    }
-});
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-function playSystemSound(freq, type, duration) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.type = type;
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + duration);
-}
-
-// 8. Preloader Mantığı
-window.addEventListener('load', () => {
+/* ================================
+   Preloader
+   ================================ */
+function initPreloader() {
     const preloader = document.getElementById('preloader');
-    const progressBar = document.querySelector('.progress-bar');
-    const statusText = document.querySelector('.status-text');
-    let width = 0;
 
-    const interval = setInterval(() => {
-        if (width >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                playSystemSound(800, 'square', 0.1); // Giriş sesi
-            }, 500);
-        } else {
-            width += Math.random() * 10;
-            if (width > 100) width = 100;
-            progressBar.style.width = width + '%';
-
-            if (width > 30) statusText.innerText = "SCANNING CORE MODULES...";
-            if (width > 60) statusText.innerText = "LOADING SYSTEM ASSETS...";
-            if (width > 90) statusText.innerText = "ACCESS GRANTED. WELCOME.";
-        }
-    }, 200);
-});
-
-// 9. Canlı Dashboard Verileri
-function updateDashboard() {
-    const cpu = document.getElementById('cpu-load');
-    const net = document.getElementById('net-traffic');
-    const btc = document.getElementById('btc-price');
-
-    cpu.innerText = Math.floor(Math.random() * 40 + 5) + "%";
-    net.innerText = (Math.random() * 5 + 0.5).toFixed(1) + " MB/s";
-
-    // Basit BTC fiyat oynatıcı
-    let currentBtc = 98432 + (Math.random() * 100 - 50);
-    btc.innerText = "$" + Math.floor(currentBtc).toLocaleString();
-}
-setInterval(updateDashboard, 2000);
-
-// Hover sesleri ekle
-const soundElements = document.querySelectorAll('a, button, .card-3d, .blog-card, .project-box');
-soundElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        playSystemSound(1200, 'sine', 0.05);
+    window.addEventListener('load', function () {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 2500);
     });
+
+    // Fallback - hide after 4 seconds
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }, 4000);
+}
+
+/* ================================
+   Navbar Scroll Effect
+   ================================ */
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
+    const announcementBar = document.querySelector('.announcement-bar');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Active link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', function () {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+/* ================================
+   Mobile Menu Toggle
+   ================================ */
+function initMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-links a');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
+}
+
+/* ================================
+   Particles Background
+   ================================ */
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        createParticle(particlesContainer);
+    }
+}
+
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = Math.random() * 4 + 2;
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 10;
+
+    particle.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        background: rgba(0, 212, 255, ${Math.random() * 0.5 + 0.2});
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: particleFloat ${duration}s linear ${delay}s infinite;
+        pointer-events: none;
+    `;
+
+    container.appendChild(particle);
+}
+
+// Add particle animation to CSS dynamically
+const particleStyles = document.createElement('style');
+particleStyles.textContent = `
+    @keyframes particleFloat {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(${Math.random() > 0.5 ? '' : '-'}100px, -200px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(particleStyles);
+
+/* ================================
+   Copy IP Address
+   ================================ */
+function initCopyIP() {
+    // Make copyIP globally available
+    window.copyIP = copyIP;
+}
+
+function copyIP() {
+    const ip = 'play.loriax.com';
+
+    navigator.clipboard.writeText(ip).then(() => {
+        showToast();
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = ip;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast();
+    });
+}
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+/* ================================
+   Counter Animation
+   ================================ */
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-value');
+
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-count'));
+    const duration = 2000;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeOutQuad(progress);
+        const current = Math.floor(start + (target - start) * easeProgress);
+
+        element.textContent = current.toLocaleString();
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target.toLocaleString();
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+function easeOutQuad(t) {
+    return t * (2 - t);
+}
+
+/* ================================
+   Smooth Scroll
+   ================================ */
+function initSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80;
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/* ================================
+   Scroll Animations
+   ================================ */
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll(
+        '.feature-card, .mode-card, .news-card, .leaderboard-card, .rule-card, .section-header'
+    );
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    animatedElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(element);
+    });
+}
+
+/* ================================
+   Parallax Effect (Optional)
+   ================================ */
+window.addEventListener('scroll', function () {
+    const scrolled = window.scrollY;
+    const heroContent = document.querySelector('.hero-content');
+
+    if (heroContent && scrolled < 800) {
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / 800);
+    }
 });
+
+/* ================================
+   Server Status Check (Simulated)
+   ================================ */
+function updateServerStatus() {
+    const playerCountElement = document.getElementById('playerCount');
+    if (playerCountElement) {
+        // Simulated player count - in a real scenario, this would fetch from an API
+        const simulatedPlayers = Math.floor(Math.random() * 50) + 10;
+        playerCountElement.textContent = `${simulatedPlayers} Oyuncu Çevrimiçi`;
+    }
+}
+
+// Update every 30 seconds
+setInterval(updateServerStatus, 30000);
+
+/* ================================
+   Easter Egg - Konami Code
+   ================================ */
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function (e) {
+    if (e.code === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+            activateEasterEgg();
+            konamiIndex = 0;
+        }
+    } else {
+        konamiIndex = 0;
+    }
+});
+
+function activateEasterEgg() {
+    document.body.style.animation = 'rainbow 2s linear infinite';
+
+    const easterEggStyle = document.createElement('style');
+    easterEggStyle.textContent = `
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(easterEggStyle);
+
+    setTimeout(() => {
+        document.body.style.animation = '';
+    }, 5000);
+}
+
+/* ================================
+   Performance Optimization
+   ================================ */
+// Debounce function for scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle function for frequent events
+function throttle(func, limit) {
+    let inThrottle;
+    return function (...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+console.log('%c🐺 Loriax Network', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
+console.log('%cSunucumuza hoş geldiniz! play.loriax.com', 'font-size: 14px; color: #94a3b8;');
